@@ -1,0 +1,322 @@
+{
+ "id": "pulse-laser",
+ "title": "Pulse Laser",
+ "category": "Projectiles",
+ "summary": "The allied light unit's rhythm weapon: a short, crisp bolt of light about 28 px long, a white-hot capsule head with a cyan sheath and a tapering tail, with bright packets streaming back along it so it reads fast even on a long flight. It leaves the barrel in a tiny teardrop flash that points down the line of fire, and lands in a splash of hot plasma: a white-hot flash bursting into lit cyan billows, with molten droplets, embers and ion motes sprayed back toward the shooter (Zach, 2026-10-16: 'more like a splash like laser splash hot plasma'). Cool and near-white so it can never be mistaken for a hostile shot. Three shots a second, so each piece is simple, bright and short.",
+ "durationMs": 1600.0,
+ "loops": false,
+ "onScreenPx": 56.0,
+ "sheets": [
+  {
+   "name": "flight",
+   "frames": 8,
+   "fps": 60.0,
+   "loop": true,
+   "durationMs": 133.3,
+   "grid": {
+    "columns": 4,
+    "rows": 2,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5,
+    "px": [
+     128.0,
+     128.0
+    ],
+    "source": "cell centre (no pivot stated)"
+   },
+   "onScreenPx": 40.0,
+   "drawScale": 0.1562,
+   "strip": 1.0,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "flight/light-additive.png",
+     "rgbaFile": "flight/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "hit",
+   "frames": 15,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 250.0,
+   "grid": {
+    "columns": 4,
+    "rows": 4,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.58,
+    "y": 0.5,
+    "px": [
+     148.48,
+     128.0
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 56.0,
+   "drawScale": 0.2188,
+   "strip": 1.0,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "hit/light-additive.png",
+     "rgbaFile": "hit/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "muzzle",
+   "frames": 5,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 83.3,
+   "grid": {
+    "columns": 4,
+    "rows": 2,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.22,
+    "y": 0.5,
+    "px": [
+     56.32,
+     128.0
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 32.0,
+   "drawScale": 0.125,
+   "strip": 1.0,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "muzzle/light-additive.png",
+     "rgbaFile": "muzzle/light-rgba.png"
+    },
+    {
+     "name": "sparks",
+     "blend": "additive",
+     "file": "muzzle/sparks-additive.png",
+     "rgbaFile": "muzzle/sparks-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  }
+ ],
+ "sample": {
+  "width": 960,
+  "height": 240,
+  "fps": 60.0,
+  "durationMs": 1600.0,
+  "tracks": [
+   {
+    "sheet": "muzzle",
+    "x": 116.9,
+    "y": 120.0,
+    "w": 96.0,
+    "h": 96.0,
+    "fromMs": 0.0,
+    "toMs": 84.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "flight",
+    "x": 46.800000000000004,
+    "y": 120.0,
+    "w": 120.0,
+    "h": 120.0,
+    "fromMs": 17.0,
+    "toMs": 650.0,
+    "loop": true,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [
+     [
+      17.0,
+      46.8,
+      120.0
+     ],
+     [
+      650.0,
+      806.8,
+      120.0
+     ]
+    ],
+    "crop": []
+   },
+   {
+    "sheet": "hit",
+    "x": 836.6,
+    "y": 120.0,
+    "w": 168.0,
+    "h": 168.0,
+    "fromMs": 650.0,
+    "toMs": 900.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "muzzle",
+    "x": 116.9,
+    "y": 120.0,
+    "w": 96.0,
+    "h": 96.0,
+    "fromMs": 333.0,
+    "toMs": 417.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "flight",
+    "x": 46.800000000000004,
+    "y": 120.0,
+    "w": 120.0,
+    "h": 120.0,
+    "fromMs": 350.0,
+    "toMs": 983.0,
+    "loop": true,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [
+     [
+      350.0,
+      46.8,
+      120.0
+     ],
+     [
+      983.0,
+      806.8,
+      120.0
+     ]
+    ],
+    "crop": []
+   },
+   {
+    "sheet": "hit",
+    "x": 836.6,
+    "y": 120.0,
+    "w": 168.0,
+    "h": 168.0,
+    "fromMs": 983.0,
+    "toMs": 1233.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "muzzle",
+    "x": 116.9,
+    "y": 120.0,
+    "w": 96.0,
+    "h": 96.0,
+    "fromMs": 667.0,
+    "toMs": 751.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "flight",
+    "x": 46.800000000000004,
+    "y": 120.0,
+    "w": 120.0,
+    "h": 120.0,
+    "fromMs": 684.0,
+    "toMs": 1317.0,
+    "loop": true,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [
+     [
+      684.0,
+      46.8,
+      120.0
+     ],
+     [
+      1317.0,
+      806.8,
+      120.0
+     ]
+    ],
+    "crop": []
+   },
+   {
+    "sheet": "hit",
+    "x": 836.6,
+    "y": 120.0,
+    "w": 168.0,
+    "h": 168.0,
+    "fromMs": 1317.0,
+    "toMs": 1567.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   }
+  ]
+ },
+ "integration": [
+  "Three sheets, all additive (black is transparent; the -rgba atlases are straight-alpha equivalents). 256 px cells, 60 fps, 4-column atlases. hit and muzzle each export two layers, light and sparks: draw both, same frame, same pivot.",
+  "flight: seamless 8-frame loop (133 ms), drawn at a 40 px cell, so the bolt is about 28 px long and 4 px thick. The sheet points along +x; rotate the sprite to the velocity angle around the cell centre, which is the bolt's centre (the head sits 0.36 of the cell ahead of it, about 14 px). Start each bolt's loop on a random frame so a salvo does not flicker in sync. Speed is the game's (card: about 400 px/s); the loop only animates the light inside a fixed silhouette, so the bolt's sprite size is its visual hitbox.",
+  "muzzle: on each shot play once (84 ms, 5 frames) at a 32 px cell, rotated to the aim. Its pivot is the barrel tip at canvas (0.22, 0.5), not the cell centre. The flash's light is about 18 px long; it shrinks back to the barrel by 50 ms, so at 3 shots/s it never covers the unit between shots.",
+  "Spawn the bolt 17 ms (one frame) after the muzzle starts, with its centre 0.36 of a bolt cell (about 14 px) ahead of the barrel tip so its tail starts at the barrel, not behind it.",
+  "hit: when the bolt reaches its target, despawn it and play hit once (250 ms, 15 frames) at a 56 px cell. Its pivot is the contact point at canvas (0.58, 0.5), not the cell centre. Rotate it to the bolt's travel angle, the same rotation as the flight sprite: the sheet assumes a bolt arriving along +x and splashes back toward -x, at the shooter. Do not squash it (it is at unit height, not on the ground). The white flash is about 32 px across on frames 0-2; droplets and embers are gone by about 230 ms.",
+  "Rhythm: about 3 shots/s per unit means about 2 bolts in the air per unit at 400 px/s over a ~250 px range. A crowd of 14 staggered hits stays separate dots of light (review crowd), so no hit cap is needed for blowout.",
+  "Placeholder sound shotLaser plays on the muzzle frame 0; the hit has no cue yet."
+ ]
+}

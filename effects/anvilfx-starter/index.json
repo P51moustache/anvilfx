@@ -1,0 +1,22 @@
+{
+ "title": "AnvilFX Starter",
+ "ground": "#0b1626",
+ "grid": "#1d3b4f",
+ "effects": [
+  "pulse-laser",
+  "shell-impact",
+  "command-ping",
+  "repair-beam"
+ ],
+ "packs": [
+  {
+   "title": "AnvilFX Starter",
+   "effects": [
+    "pulse-laser",
+    "shell-impact",
+    "command-ping",
+    "repair-beam"
+   ]
+  }
+ ]
+}

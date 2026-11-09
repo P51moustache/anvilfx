@@ -1,0 +1,138 @@
+{
+ "id": "command-ping",
+ "title": "Command Ping",
+ "category": "Markers",
+ "summary": "The ground marker under the cursor when the player gives an order: about 48 px on the isometric floor (view_squash 0.42), one-shot 700 ms (Zach slowed it from the card's 500 ms), played on every click, so it must be crisp, quick and never noisy. One ground sheet with two tiers. Move (cool cyan): a soft pop at the click, then two waves of thin tapered arc pairs that travel outward and fade as they go, and four small chevrons that fly in, overshoot and settle around the click with a tiny star glint. Attack (warm red): the same 700 ms, but the arcs snap in from the edge and contract on the click, and four sharp crosshair ticks converge in a '+' with a sharper star glint, so it reads aggressive in silhouette as well as hue. Never a static ring: every arc is broken and moving, and only the click dot holds still.",
+ "durationMs": 1500.0,
+ "loops": false,
+ "onScreenPx": 60.0,
+ "sheets": [
+  {
+   "name": "ping-move",
+   "frames": 42,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 700.0,
+   "grid": {
+    "columns": 7,
+    "rows": 6,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5,
+    "px": [
+     128.0,
+     128.0
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 60.0,
+   "drawScale": 0.2344,
+   "strip": 1.0,
+   "view": {
+    "squash": 0.42,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "ping-move/light-additive.png",
+     "rgbaFile": "ping-move/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "ping-attack",
+   "frames": 42,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 700.0,
+   "grid": {
+    "columns": 7,
+    "rows": 6,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5,
+    "px": [
+     128.0,
+     128.0
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 60.0,
+   "drawScale": 0.2344,
+   "strip": 1.0,
+   "view": {
+    "squash": 0.42,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "ping-attack/light-additive.png",
+     "rgbaFile": "ping-attack/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  }
+ ],
+ "sample": {
+  "width": 420,
+  "height": 200,
+  "fps": 60.0,
+  "durationMs": 1500.0,
+  "tracks": [
+   {
+    "sheet": "ping-move",
+    "x": 130.0,
+    "y": 110.0,
+    "w": 150.0,
+    "h": 150.0,
+    "fromMs": 0.0,
+    "toMs": 700.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "ping-attack",
+    "x": 290.0,
+    "y": 90.0,
+    "w": 150.0,
+    "h": 150.0,
+    "fromMs": 750.0,
+    "toMs": 1450.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   }
+  ]
+ },
+ "integration": [
+  "One sprite per order click, on the ground at the clicked world point. ping-move for move orders, ping-attack for attack orders (attack-move and attack-unit both use ping-attack; on an attack-unit order, place it at the target's ground contact).",
+  "Shared pivot at canvas (0.5, 0.5), the cell centre: that is the exact click point (the white dot). Both sheets are already projected (view_squash 0.42); do not squash them again, and do not rotate them.",
+  "Size: draw the 256 px cell at 60 px. The move arcs end about 46 px wide by 19 px deep (the card's ~48 px long axis); the attack arcs start at that size and contract onto a crosshair about 27 px wide. Scale with camera zoom like other ground decals.",
+  "Play once, 60 fps, 42 frames, 7x6 atlases, 700 ms. Additive (black is transparent); the -rgba atlases are the straight-alpha equivalents. Draw under units, over terrain, like other ground marks.",
+  "Every click plays its own ping; a new click never cancels the previous one (it keeps fading). Eight quick clicks overlap without blowing out (review crowd of 14). If the game wants a cap, keep the newest 8 per player.",
+  "Queued (shift) waypoints can reuse ping-move at about 70% size and opacity; no separate sheet.",
+  "Sound: fire orderMove / orderAttack on frame 0 (game-side cues). The marks land at about 280 ms (move chevrons) and 170 ms (attack lock), where the star glint flashes, if a second tick is wanted."
+ ]
+}

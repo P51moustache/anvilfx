@@ -1,0 +1,143 @@
+{
+ "id": "shell-impact",
+ "title": "Shell Impact",
+ "category": "Bursts",
+ "summary": "An allied kinetic shell striking the isometric ground, painted: a burst of white-gold petal strokes and a tiny hot core at the contact, a fan of dry-brush dirt thrown straight up, hot white-gold spark comets shooting up in a narrow cone on gravity arcs, a few dirt flicks tumbling out and landing, and steel-and-dust billows (each a dry-brush dab with shadow, body and lit top) born one after another that bloom fast, drag to a stop and rise into a leaning column as they thin. Under it a separate squashed ground pass: ink-splatter sprays flung out evenly all round, low dust rolling along the floor, grit skidding out and a scuff splat that fades. Motion is physical (stagger, drag, gravity, buoyancy), so nothing moves in lockstep. Kinetic, not plasma: no crackle, no shock hoop, warm only on the flash and sparks, so the body reads cool and a crowd of 8-20 hits stays a scatter of small splashes. About 300 ms at 60 fps, 512 px cells drawn at 64 px; the ground scuff's long axis is about 44-48 px.",
+ "durationMs": 300.0,
+ "loops": false,
+ "onScreenPx": 64.0,
+ "sheets": [
+  {
+   "name": "puff",
+   "frames": 18,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 300.0,
+   "grid": {
+    "columns": 6,
+    "rows": 3,
+    "cellWidth": 512,
+    "cellHeight": 512,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.6,
+    "px": [
+     256.0,
+     307.2
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 64.0,
+   "drawScale": 0.125,
+   "strip": 1.0,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "puff/light-additive.png",
+     "rgbaFile": "puff/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "scuff",
+   "frames": 18,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 300.0,
+   "grid": {
+    "columns": 6,
+    "rows": 3,
+    "cellWidth": 512,
+    "cellHeight": 512,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.6,
+    "px": [
+     256.0,
+     307.2
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 64.0,
+   "drawScale": 0.125,
+   "strip": 1.0,
+   "view": {
+    "squash": 0.42,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "holdout",
+     "blend": "multiply",
+     "file": "scuff/holdout-multiply.png",
+     "rgbaFile": "scuff/holdout-rgba.png"
+    },
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "scuff/light-additive.png",
+     "rgbaFile": "scuff/light-rgba.png"
+    }
+   ],
+   "blend": "layered"
+  }
+ ],
+ "sample": {
+  "width": 240,
+  "height": 200,
+  "fps": 60.0,
+  "durationMs": 300.0,
+  "tracks": [
+   {
+    "sheet": "scuff",
+    "x": 120.0,
+    "y": 110.0,
+    "w": 160.0,
+    "h": 160.0,
+    "fromMs": 0.0,
+    "toMs": 300.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "puff",
+    "x": 120.0,
+    "y": 110.0,
+    "w": 160.0,
+    "h": 160.0,
+    "fromMs": 0.0,
+    "toMs": 300.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   }
+  ]
+ },
+ "integration": [
+  "Two sprites, one impact node at the shell's ground contact. Draw order: scuff, then puff. Shared pivot at canvas (0.5, 0.60); drawn at 64 px that is ~6 px below the sprite centre.",
+  "Scuff sheet is already projected (view_squash 0.42); do not squash it again. Puff sheet stays full height.",
+  "Play once, 60 fps, 18 unique frames, 6x3 atlases, 300 ms. Additive for both; scuff also exports a multiply holdout for light floors. Painted at 512 px per cell, drawn at 64 px. The scuff peaks at ~44 px wide x ~17 px deep (64 px cell) around 150 ms.",
+  "Many at once: 8-20 hits may overlap. No per-hit screen shake or flash; any shake is a game-side salvo decision.",
+  "Persistent craters, if wanted, are a separate game-side decal; the scuff splat fades with the sheet and leaves nothing on the floor.",
+  "Shell flight, damage and fire rate are unset; 64 px cell / ~48 px long axis / 300 ms is the presentation contract until the RTS sim exists."
+ ]
+}

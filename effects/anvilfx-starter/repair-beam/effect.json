@@ -1,0 +1,336 @@
+{
+ "id": "repair-beam",
+ "title": "Repair Beam",
+ "category": "Beams",
+ "summary": "A gentle allied repair link. The engineer's tool glows with a small soft mint teardrop (emitter loop); from it a soft, even ribbon of teal-cyan light with a pale mint centre runs to the target (beam, a 600 ms strip the game stretches, 16 px tall), carrying small plus-shaped motes and two broad soft swells toward the target: no crackle, no white core, nothing that reads as damage. The beam reaches out in 100 ms (start) and lets go into the target in 150 ms (stop). Over the repaired unit an upright aura (600 ms loop, about 60 px) sends soft mint plus sparkles up from its foot, twinkling and cooling as they fade, with a few small hull glints, faint rising wisps and a soft breathing glow at its middle; nothing sits on the floor. Every clock is a whole cycle of 600 ms, so beam, emitter and aura loop together. Player cyan with a mint tint, kept low so several repairs on screen stay calm.",
+ "durationMs": 2100.0,
+ "loops": false,
+ "onScreenPx": 88.0,
+ "sheets": [
+  {
+   "name": "beam",
+   "frames": 36,
+   "fps": 60.0,
+   "loop": true,
+   "durationMs": 600.0,
+   "grid": {
+    "columns": 6,
+    "rows": 6,
+    "cellWidth": 256,
+    "cellHeight": 64,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5,
+    "px": [
+     128.0,
+     32.0
+    ],
+    "source": "cell centre (no pivot stated)"
+   },
+   "onScreenPx": 64.0,
+   "drawScale": 0.25,
+   "strip": 0.25,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "beam/light-additive.png",
+     "rgbaFile": "beam/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "start",
+   "frames": 9,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 150.0,
+   "grid": {
+    "columns": 6,
+    "rows": 2,
+    "cellWidth": 256,
+    "cellHeight": 64,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5,
+    "px": [
+     128.0,
+     32.0
+    ],
+    "source": "cell centre (no pivot stated)"
+   },
+   "onScreenPx": 64.0,
+   "drawScale": 0.25,
+   "strip": 0.25,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "start/light-additive.png",
+     "rgbaFile": "start/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "stop",
+   "frames": 9,
+   "fps": 60.0,
+   "loop": false,
+   "durationMs": 150.0,
+   "grid": {
+    "columns": 6,
+    "rows": 2,
+    "cellWidth": 256,
+    "cellHeight": 64,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5,
+    "px": [
+     128.0,
+     32.0
+    ],
+    "source": "cell centre (no pivot stated)"
+   },
+   "onScreenPx": 64.0,
+   "drawScale": 0.25,
+   "strip": 0.25,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "stop/light-additive.png",
+     "rgbaFile": "stop/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "emitter",
+   "frames": 36,
+   "fps": 60.0,
+   "loop": true,
+   "durationMs": 600.0,
+   "grid": {
+    "columns": 6,
+    "rows": 6,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.4,
+    "y": 0.5,
+    "px": [
+     102.4,
+     128.0
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 40.0,
+   "drawScale": 0.1562,
+   "strip": 1.0,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "emitter/light-additive.png",
+     "rgbaFile": "emitter/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  },
+  {
+   "name": "aura",
+   "frames": 36,
+   "fps": 60.0,
+   "loop": true,
+   "durationMs": 600.0,
+   "grid": {
+    "columns": 6,
+    "rows": 6,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "order": "row-major: frame 0 top-left, left to right, then top to bottom"
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.72,
+    "px": [
+     128.0,
+     184.32
+    ],
+    "source": "integration notes"
+   },
+   "onScreenPx": 88.0,
+   "drawScale": 0.3438,
+   "strip": 1.0,
+   "view": {
+    "squash": 1.0,
+    "rotationDeg": 0.0,
+    "alreadyApplied": true
+   },
+   "layers": [
+    {
+     "name": "light",
+     "blend": "additive",
+     "file": "aura/light-additive.png",
+     "rgbaFile": "aura/light-rgba.png"
+    }
+   ],
+   "blend": "additive"
+  }
+ ],
+ "sample": {
+  "width": 660,
+  "height": 290,
+  "fps": 60.0,
+  "durationMs": 2100.0,
+  "tracks": [
+   {
+    "sheet": "emitter",
+    "x": 99.0,
+    "y": 150.0,
+    "w": 120.0,
+    "h": 120.0,
+    "fromMs": 0.0,
+    "toMs": 1900.0,
+    "loop": true,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      80.0,
+      1.0
+     ],
+     [
+      1650.0,
+      1.0
+     ],
+     [
+      1850.0,
+      0.0
+     ]
+    ],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "start",
+    "x": 330.0,
+    "y": 150.0,
+    "w": 489.0,
+    "h": 48.0,
+    "fromMs": 0.0,
+    "toMs": 150.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "beam",
+    "x": 330.0,
+    "y": 150.0,
+    "w": 489.0,
+    "h": 48.0,
+    "fromMs": 150.0,
+    "toMs": 1650.0,
+    "loop": true,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "stop",
+    "x": 330.0,
+    "y": 150.0,
+    "w": 489.0,
+    "h": 48.0,
+    "fromMs": 1650.0,
+    "toMs": 1800.0,
+    "loop": false,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [],
+    "path": [],
+    "crop": []
+   },
+   {
+    "sheet": "aura",
+    "x": 560.0,
+    "y": 142.0,
+    "w": 264.0,
+    "h": 264.0,
+    "fromMs": 100.0,
+    "toMs": 1950.0,
+    "loop": true,
+    "loopOffsetMs": 0.0,
+    "flipY": false,
+    "opacity": [
+     [
+      100.0,
+      0.0
+     ],
+     [
+      250.0,
+      1.0
+     ],
+     [
+      1650.0,
+      1.0
+     ],
+     [
+      1800.0,
+      0.0
+     ]
+    ],
+    "path": [],
+    "crop": []
+   }
+  ]
+ },
+ "integration": [
+  "Five sheets, all additive (black is transparent; the -rgba atlases are straight-alpha equivalents). 256 px cells, 60 fps, 6-column atlases. beam, emitter and aura are seamless 600 ms loops (36 frames); start and stop are 150 ms one-shots (9 frames). Every clock in the loops is a whole cycle of 600 ms, so they can share one frame counter.",
+  "beam (and start/stop): a strip. Each cell exports as a 256x64 band (strip 0.25) that the game stretches from the engineer's tool to the target and rotates to that angle; draw it 16 px tall at any length. The ribbon spans 88% of the band's width (it starts at 0.06 and ends at 0.94 with soft rounded ends), so stretch the band to distance / 0.88 and centre it on the midpoint. Plus motes flow from the band's left (engineer) to its right (target); never mirror it.",
+  "Sequence: on repair start play start once (the ribbon reaches out in 100 ms and settles by 150 ms), then loop beam from frame 0 while repairing; on stop play stop once (the ribbon lets go of the engineer and slides into the target, fading by 150 ms). start ends and stop begins on the loop's own values, so the swaps do not pop.",
+  "emitter: loop at the engineer's tool tip while the beam is on, drawn at a 40 px cell, rotated to the beam angle. Pivot at canvas (0.4, 0.5), the nozzle: the teardrop is fattest there and tapers forward into the beam. Fade it in with start (about 80 ms) and out over stop.",
+  "aura: loop upright over the repaired unit (never rotated, never squashed), drawn at an 88 px cell so the sparkle field is about 60 px wide. Pivot at canvas (0.5, 0.72), the unit's ground contact; the beam should aim at the unit's middle, about 0.17 of the cell (15 px) above the pivot. Fade it in by alpha over 150 ms when the first beam lands and out over 150 ms after the last beam stops. Nothing is drawn on the floor.",
+  "One aura per repaired unit, not per engineer: when several engineers repair one target, draw one aura and one beam per engineer. Start each target's aura loop on a random frame so neighbouring repairs do not twinkle in sync. Calm under load was checked with a 14-aura staggered crowd."
+ ]
+}

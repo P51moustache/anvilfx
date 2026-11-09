@@ -1,0 +1,11 @@
+# Normalize line endings for all files that Git considers text files.
+* text=auto eol=lf
+
+# The Godot Asset Library download holds only the plugin and the four starter effects.
+# Everything else in this repository (demo scene, project file, README media) stays on GitHub.
+/**          export-ignore
+/addons      !export-ignore
+/addons/**   !export-ignore
+/effects     !export-ignore
+/effects/**  !export-ignore
+/LICENSE     !export-ignore
