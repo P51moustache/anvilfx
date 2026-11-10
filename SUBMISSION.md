@@ -1,7 +1,8 @@
 # Godot Asset Library submission: AnvilFX
 
-Prepared 2026-11-08. Nothing here has been pushed or submitted. This file is not part of the Asset Library download
-(`.gitattributes` leaves it out).
+Submitted 2026-11-09 as thepixelgoblin. The public repository is https://github.com/P51moustache/anvilfx.
+The Asset Library submission is pending moderator approval: https://godotengine.org/asset-library/asset/edit/24915.
+This file is excluded from the Asset Library download by `.gitattributes`.
 
 ## Form fields (godotengine.org/asset-library/asset/submit)
 
@@ -9,13 +10,13 @@ Prepared 2026-11-08. Nothing here has been pushed or submitted. This file is not
 |---|---|
 | Asset Name | AnvilFX |
 | Category | Addons > 2D Tools |
-| Godot version | 4.3 (the plugin targets 4.3 and later; see "Tested on" below) |
+| Godot version | 4.7 (the version family validated with Godot 4.7.2) |
 | Version | 1.6 (matches `addons/anvilfx/plugin.cfg`) |
 | Repository host | GitHub |
-| Repository URL | `https://github.com/<ACCOUNT>/anvilfx` (placeholder: fill in after step 1 below) |
-| Issues URL | `https://github.com/<ACCOUNT>/anvilfx/issues` (or leave empty) |
-| Download Commit | full 40-character hash of the commit on `main` you want to publish (`git rev-parse HEAD`) |
-| Icon URL | `https://raw.githubusercontent.com/<ACCOUNT>/anvilfx/main/icon.png` (must be raw.githubusercontent.com, not github.com; 256x256) |
+| Repository URL | `https://github.com/P51moustache/anvilfx` |
+| Issues URL | `https://github.com/P51moustache/anvilfx/issues` (or leave empty) |
+| Download Commit | `f725252b45069cd0c0b79f9b4558a6a83bbebf4c` (submitted code; later documentation commits do not change this pin) |
+| Icon URL | `https://raw.githubusercontent.com/P51moustache/anvilfx/main/icon.png` (must be raw.githubusercontent.com, not github.com; 256x256) |
 | License | MIT |
 
 Previews (up to three, type Image). Use raw links like the icon, from `media/` in the repo:
@@ -43,7 +44,7 @@ Four starter effects are included: Pulse Laser, Shell Impact, Command Ping and R
 
 Install: download from the AssetLib tab, keep everything ticked, then enable AnvilFX under Project > Project Settings > Plugins. More effect packs: thepixelgoblin.itch.io
 
-MIT licensed. Godot 4.3 or later.
+MIT licensed. Tested in Godot 4.7.2.
 ```
 
 ## What is in the repo
@@ -83,21 +84,13 @@ Only comments and examples that named paid effects or private modules, so the co
 Godot 4.7.2 (headless). Not run on 4.3 itself; the 4.3 floor comes from the plugin's existing store listing. If you
 want certainty before choosing "4.3" in the form, open the repo in Godot 4.3 once.
 
-## Checklist for Zach
+## Publication record and next steps
 
-1. Read `README.md`, look at `icon.png`, and decide whether you are happy with the repo as it stands.
-2. On GitHub create a **public** repository, for example `anvilfx`, under the account you want to publish with.
-   Do not add a README or licence there (the repo already has them). Do not use `vfx-forge`; it stays private.
-3. In `/Users/zach/Projects/anvilfx-oss`:
-   ```
-   git remote add origin https://github.com/<ACCOUNT>/anvilfx.git
-   git push -u origin main
-   ```
-4. Optional: swap `FEEDBACK_URL` (see above) and add a repo description and topics (`godot`, `godot4`,
-   `vfx`, `2d`, `editor-plugin`).
-5. Open the repo's raw icon link in a browser to confirm it loads:
-   `https://raw.githubusercontent.com/<ACCOUNT>/anvilfx/main/icon.png`.
-6. Log in at godotengine.org/asset-library, open **Submit Assets**, fill the table above (Download Commit =
-   `git rev-parse HEAD` after pushing), press **Submit**. Review takes up to a few days.
-7. After it is approved, put the Asset Library link on the itch page and in the README if you like. A later
-   version needs a new commit hash on the asset's edit page.
+- Public repo: https://github.com/P51moustache/anvilfx
+- Submitted asset version: 1.6, minimum Godot 4.7, MIT, category 2D Tools.
+- Submitted commit: `f725252b45069cd0c0b79f9b4558a6a83bbebf4c`.
+- Submission record: https://godotengine.org/asset-library/asset/edit/24915
+- Status at submission: pending moderator approval; not searchable until approved.
+- Preview: `media/catalogue.png`, with a direct raw GitHub URL.
+
+After approval, add the approved Asset Library URL to the README and itch page. Do not claim approval from the submission confirmation. If moderators request changes, fix those and update the existing submission rather than creating a duplicate. For later code releases, submit a new full commit hash. Godot 4.3 compatibility remains unverified; lower the minimum only after testing it.
