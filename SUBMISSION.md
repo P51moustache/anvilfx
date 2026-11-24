@@ -1,7 +1,7 @@
 # Godot Asset Library submission: AnvilFX
 
 Submitted 2026-11-09 as thepixelgoblin. The public repository is https://github.com/P51moustache/anvilfx.
-The Asset Library submission is pending moderator approval: https://godotengine.org/asset-library/asset/edit/24915.
+Accepted 2026-11-10 (edit 24915): live as https://godotengine.org/asset-library/asset/5595.
 This file is excluded from the Asset Library download by `.gitattributes`.
 
 ## Form fields (godotengine.org/asset-library/asset/submit)

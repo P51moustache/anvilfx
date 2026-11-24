@@ -38,7 +38,7 @@ instance anywhere.
 
 You need Godot 4.3 or later.
 
-**From the Godot Asset Library**
+**From the [Godot Asset Library](https://godotengine.org/asset-library/asset/5595)**
 
 1. Open the **AssetLib** tab in the editor and search for "AnvilFX".
 2. Download it, keep everything ticked and press **Install**. That adds `addons/anvilfx/` and
