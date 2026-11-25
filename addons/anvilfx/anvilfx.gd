@@ -36,12 +36,22 @@ extends RefCounted
 ##   while_paused bool        keep playing when the tree is paused (process_mode Always)
 ##   hit_stop     float       also freeze the game this many seconds (see hit_stop())
 ##   shake        float       also shake the current camera by up to this many px (see shake())
+##   pool         bool        reuse an idle node instead of building a new one, for heavy fire (see below)
+##
+## Heavy fire: spawning hundreds of effects a second (a minigun, a swarm's hits) builds and frees a node tree per
+## effect. With "pool" the node comes from a pool and goes back to it when its pass ends, so nothing is built or
+## freed during play. Fill the pool before the fight with warm(), and end a pooled looping effect with release()
+## rather than queue_free(). Don't keep a pooled node after it finishes: the next spawn reuses it.
+##
+##     AnvilFX.warm(["pulse-laser/muzzle", "shell-impact"], 64)
+##     AnvilFX.spawn("pulse-laser/muzzle", $Muzzle.global_position, {"attach": $Muzzle, "pool": true})
 
 const Library = preload("dock/library.gd")
 const Juice = preload("juice.gd")
+const EffectPool = preload("effect_pool.gd")
 const OPTIONS = ["attach", "parent", "direction", "rotation", "facing", "scale", "speed", "sustain",
 		"sustain_hold", "holdout", "light", "trim_start", "trim_end", "pieces", "layers", "split_pieces",
-		"sheet", "loop", "modulate", "z_index", "unscaled", "while_paused", "hit_stop", "shake"]
+		"sheet", "loop", "modulate", "z_index", "unscaled", "while_paused", "hit_stop", "shake", "pool"]
 const SHAKE_SECONDS = 0.3   # an impact's shake: long enough to feel, short enough not to blur the next hit
 
 static var _entries := {}   # id -> library entry, filled by the first lookup
@@ -56,13 +66,20 @@ static func spawn(what: Variant, at: Vector2, options: Dictionary = {}) -> Anvil
 	if scene == null:
 		push_error("AnvilFX.spawn: no effect \"%s\". Ids are effect folder names; see AnvilFX.ids()." % [what])
 		return null
-	var node := scene.instantiate() as AnvilFXEffect
+	# a split effect changes its own node tree, so it can't be handed back as made
+	var pooled := bool(options.get("pool", false)) and not bool(options.get("split_pieces", false))
+	var node: AnvilFXEffect = _pool().take(scene) if pooled else scene.instantiate() as AnvilFXEffect
 	if node == null:
 		push_error("AnvilFX.spawn: %s is not an AnvilFX effect scene." % [what])
 		return null
+	var reused := node.is_node_ready()
 	_configure(node, options)
+	if pooled:
+		node.free_when_finished = false   # the pool takes it back instead
 	var parent: Node = options.get("attach", options.get("parent", _default_parent()))
 	parent.add_child(node)
+	if reused and node.autoplay:   # _ready (and its autoplay) ran on the node's first spawn only
+		node.play()
 	if bool(options.get("split_pieces", false)) and node.sheet == "" and node.sheet_names().size() > 1:
 		node.unpack_pieces()
 	node.global_position = at
@@ -100,10 +117,24 @@ static func ids() -> PackedStringArray:
 	return out
 
 
-## Load these effects now (ids, as spawn() takes them), so the first spawn in play doesn't hitch.
-static func warm(names: Array) -> void:
+## Load these effects now (ids, as spawn() takes them), so the first spawn in play doesn't hitch. With `pooled`,
+## also build that many idle nodes of each for spawn(..., {"pool": true}).
+static func warm(names: Array, pooled: int = 0) -> void:
 	for name in names:
-		_scene(name, "")
+		var scene := _scene(name, "")
+		if scene != null and pooled > 0:
+			_pool().fill(scene, pooled)
+
+
+## End an effect from spawn(): a pooled one goes back to the pool, any other is freed. Use it to stop a looping
+## pooled effect (a flame, a beam) when its source stops.
+static func release(node: AnvilFXEffect) -> void:
+	if not is_instance_valid(node):
+		return
+	if EffectPool.is_pooled(node):
+		_pool().release(node)
+	else:
+		node.queue_free()
 
 
 ## Forget the effect list, after adding or importing effects while the game runs (the editor does it for you).
@@ -198,6 +229,10 @@ static func _configure(node: AnvilFXEffect, options: Dictionary) -> void:
 static func _default_parent() -> Node:
 	var tree := Engine.get_main_loop() as SceneTree
 	return tree.current_scene if tree.current_scene else tree.root
+
+
+static func _pool() -> Node:
+	return EffectPool.of(Engine.get_main_loop() as SceneTree)
 
 
 static func _juice() -> Node:

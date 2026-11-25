@@ -270,6 +270,18 @@ func get_layer_opacity(layer_name: String) -> float:
 	return float(_layer_opacity.get(layer_name, 1.0))
 
 
+## Whether any layer has been switched off or faded with set_layer_enabled() or set_layer_opacity().
+func has_layer_overrides() -> bool:
+	return not _layer_enabled.is_empty() or not _layer_opacity.is_empty()
+
+
+## Clear every per-layer override (enabled and opacity) back to as made.
+func reset_layers() -> void:
+	_layer_enabled.clear()
+	_layer_opacity.clear()
+	_apply_customizations()
+
+
 ## Set one property (`enabled`, `offset`, `scale`, `speed`, `delay_ms`, `opacity`, `modulate`) on a sheet piece.
 func set_piece_property(sheet_name: String, key: String, value: Variant) -> void:
 	if not PIECE_DEFAULTS.has(key):

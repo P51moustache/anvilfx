@@ -66,6 +66,19 @@ The **Copy code** button in the tab writes the line for whatever you have chosen
 direction, scale, speed, tint, layer visibility, hit-stop, shake and more. They are listed at the top of
 [`addons/anvilfx/anvilfx.gd`](addons/anvilfx/anvilfx.gd).
 
+### Heavy fire
+
+For hundreds of effects a second (a minigun, a swarm's hits), pass `"pool": true`. The effect node comes from a
+pool and goes back to it when it ends, so nothing is built or freed during the fight. Fill the pool first, and end
+a pooled looping effect with `AnvilFX.release(node)` instead of `queue_free()`:
+
+```gdscript
+AnvilFX.warm(["pulse-laser/muzzle", "shell-impact"], 64)   # 64 idle nodes of each, made now
+AnvilFX.spawn("pulse-laser/muzzle", $Muzzle.global_position, {"attach": $Muzzle, "pool": true})
+```
+
+A pooled node is reused by a later spawn, so don't keep it after it finishes.
+
 ## Effect format
 
 Each effect folder holds an `effect.json` and its sprite-sheet atlases. Frames run left to right, then top to
