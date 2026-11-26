@@ -11,7 +11,7 @@ This file is excluded from the Asset Library download by `.gitattributes`.
 | Asset Name | AnvilFX |
 | Category | Addons > 2D Tools |
 | Godot version | 4.7 (the version family validated with Godot 4.7.2) |
-| Version | 1.6 (matches `addons/anvilfx/plugin.cfg`) |
+| Version | 1.7 (matches `addons/anvilfx/plugin.cfg`) |
 | Repository host | GitHub |
 | Repository URL | `https://github.com/P51moustache/anvilfx` |
 | Issues URL | `https://github.com/P51moustache/anvilfx/issues` (or leave empty) |
@@ -36,6 +36,7 @@ Features:
 - A Pieces panel to toggle, scale, retime, offset or remix each sheet and layer, or split an effect into child nodes.
 - Import your own sprite sheet (a PNG of frames in a grid) and animate it like the included effects.
 - One line of code from your game: AnvilFX.spawn("shell-impact", hit_point) aims, mirrors, attaches to a marker and frees itself. The Copy code button writes the line for you.
+- Pooling for heavy fire: AnvilFX.spawn(id, pos, {"pool": true}) reuses effect nodes, and AnvilFX.warm(ids, n) fills the pool ahead of a fight, so hundreds of effects a second build and free nothing.
 - Hit-stop and camera shake built in, with effects that keep playing through the freeze.
 - Three starter scenes (top-down, isometric, side view) with a camera, a floor and stand-in units.
 - Install effect packs straight from their zip: drop it on the editor.
