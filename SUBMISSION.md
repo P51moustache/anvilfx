@@ -94,4 +94,9 @@ want certainty before choosing "4.3" in the form, open the repo in Godot 4.3 onc
 - Status at submission: pending moderator approval; not searchable until approved.
 - Preview: `media/catalogue.png`, with a direct raw GitHub URL.
 
-After approval, add the approved Asset Library URL to the README and itch page. Do not claim approval from the submission confirmation. If moderators request changes, fix those and update the existing submission rather than creating a duplicate. For later code releases, submit a new full commit hash. Godot 4.3 compatibility remains unverified; lower the minimum only after testing it.
+After approval, add the approved Asset Library URL to the README and itch page. Do not claim approval from the submission confirmation. If moderators request changes, fix those and update the existing submission rather than creating a duplicate. For later code releases, submit a new full commit hash.
+
+### 1.7 (pooling)
+
+- Tag `v1.7`, commit `cb37e53d96a7ef17136d71ed80392d4dcdf5abd7`.
+- Edit submitted 2026-11-25: https://godotengine.org/asset-library/asset/edit/25123 (status New, waiting for a moderator). Changes: version 1.7, the new commit, and a "New in 1.7: pooling" paragraph in the description. Godot 4.3 compatibility remains unverified; lower the minimum only after testing it.
